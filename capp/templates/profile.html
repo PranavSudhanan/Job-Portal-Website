@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <style>
+        a:hover {
+          transform: scale(1.2);
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>PHPJabbers.com | Free Job Agency Website Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+</head>
+<body background="https://www.technoorg.hu/static/images/about_us/header_profiles.jpg">
+
+
+    <header class="">
+      <nav class="navbar navbar-expand-lg" style="background-color: #96be25">
+        <div class="container">
+          <a class="navbar-brand" href="http://127.0.0.1:8000/jobapp/index/"><h2>Job Agency <em> Website</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="http://127.0.0.1:8000/jobapp/index/"><h6 style="color:black">Home</h6>
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/jobapp/about/"><h6>About</h6></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/jobapp/contact/"><h6>Contact Us</h6></a>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/jobapp/index/"><h6>Logout</h6></a>
+              </li>
+              <li>
+                  <button class="btn mt-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="background-color: #96be25; color: white;"><i class="fa-solid fa-bars"></i></button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="background-color: black;">
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="background-color:white"></button>
+  <div class="offcanvas-header">
+    <img src="{% static 'pexels-pixabay-269077.jpg' %}" width="100%" height="200px" style="display:block;">
+<!--    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="background-color:white"></button>-->
+  </div>
+  <div class="offcanvas-body" style="color:white">
+    <h1>{{cmp}}</h1><br><br>
+    <ul >
+      <li><a href="http://127.0.0.1:8000/jobapp/index/"  style="color:white"><i class="fa-solid fa-house"></i>  Home</a></li><br><br>
+      <li><a href="http://127.0.0.1:8000/jobapp/about/"  style="color:white"><i class="fa-sharp fa-solid fa-building"></i>  About Company</a> </li><br><br>
+      <li><a href=""  style="color:white"><i class="fa-solid fa-user-pen"></i>         Edit Profile</a> </li><br><br>
+      <li><a href="http://127.0.0.1:8000/jobapp/index/"  style="color:white"><i class="fa-solid fa-arrow-right-from-bracket"></i>     Logout</a> </li>
+    </ul>
+  </div>
+</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header><br><br><br><br><br><br><br><br>
+
+<div class="container mt-5 mb-3">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="https://i.pinimg.com/474x/49/47/94/4947948b0ad0a06df1f706027213d8d0.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+<!--                    <h5 class="card-title">Card title</h5>-->
+<!--                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the-->
+<!--                        card's content.</p>-->
+                    <center><a href="http://127.0.0.1:8000/jobapp/vacancy/{{id}}" class="btn" style="background-color: #96be25; color: white">Upload Vacancies</a></center>
+                </div>
+            </div>
+
+        </div>    <!--col -->
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="https://i.pinimg.com/474x/ed/76/18/ed761869db27c9763fd9b7f08896099b.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+<!--                    <h5 class="card-title">Card title</h5>-->
+<!--                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the-->
+<!--                        card's content.</p>-->
+                    <center><a href="http://127.0.0.1:8000/jobapp/viewappliedusers/{{id}}" class="btn" style="background-color: #96be25; color: white">View Applied Users</a></center>
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="https://i.pinimg.com/474x/3e/70/2a/3e702a4fef8908fa38addf64218be71b.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+<!--                    <h5 class="card-title">Card title</h5>-->
+<!--                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the-->
+<!--                        card's content.</p>-->
+                    <center><a href="#" class="btn" style="background-color: #96be25; color: white">View Companies</a></center>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="https://theknowledgeexchangeblog.files.wordpress.com/2015/06/jobssign2.jpg?w=1024" style="height: 190px" class="card-img-top" alt="...">
+                <div class="card-body">
+<!--                    <h5 class="card-title">Card title</h5>-->
+<!--                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the-->
+<!--                        card's content.</p>-->
+                    <center><a href="http://127.0.0.1:8000/jobapp/vacancydisp/" class="btn" style="background-color: #96be25; color: white">Posted Jobs</a></center>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><br><br><br><br><br><br>
+  </body>
+
+{% include 'footer.html' %}
+</html>
