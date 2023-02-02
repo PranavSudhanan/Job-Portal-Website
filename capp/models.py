@@ -50,6 +50,7 @@ class addmodel(models.Model):
     qualify = models.CharField(max_length=70)
 
 class userprofilemodel(models.Model):
+    uid=models.IntegerField()
     image = models.ImageField(upload_to='capp/static')
     fname = models.CharField(max_length=25)
     email = models.EmailField()

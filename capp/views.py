@@ -164,9 +164,10 @@ def ulogin(request):
             b = User.objects.all()
             for i in b:
                 usr = i.username
-                request.session['username']=usr
-                id = i.id
+
                 if i.email == em and i.password == ps:
+                    id=i.id
+                    request.session['id']=i.id
                     # return HttpResponse("Login Success")
                     return render(request, 'userprofile.html',{'usr':usr, 'id':id})
             else:
@@ -198,8 +199,7 @@ def useredit(request, id):
 def userdel(request, id):
     a = User.objects.get(id=id)
     a.delete()
-    return redirect(viewusers)
-
+    return render(request, 'userprofiledisplay.html')
 def userdetails(request, id):
     b = User.objects.get(id=id)
     fn = b.first_name
@@ -216,7 +216,8 @@ def userdetails(request, id):
             ex = a.cleaned_data['exp']
             ad = a.cleaned_data['address']
             ph = a.cleaned_data['phone']
-            b = userprofilemodel(image=ig, fname=nm, email=em, resume=re, qualify=ql, exp=ex, address=ad, phone=ph)
+            id=request.session['id']
+            b = userprofilemodel(uid=id,image=ig, fname=nm, email=em, resume=re, qualify=ql, exp=ex, address=ad, phone=ph)
             b.save()
             # return HttpResponse("Details Uploaded Successfully...")
             return render(request, 'userprofiledisplay.html')
@@ -227,7 +228,7 @@ def userdetails(request, id):
 
 def userdisplay(request,id):
     a = userprofilemodel.objects.all()
-    b = request.session['username']
+
     li = []  # image.png
     fname = []  # xyz
     email = []
@@ -237,7 +238,10 @@ def userdisplay(request,id):
     address = []
     phone = []
     id = []
+    uid=[]
     for i in a:
+        ui=i.uid
+        uid.append(ui)
         id1 = i.id
         id.append(id1)
         img = i.image  # '[New_App/static/image.png]'
@@ -256,8 +260,11 @@ def userdisplay(request,id):
         exp.append(ex)
         address.append(ad)
         phone.append(ph)
-    mylist = zip(li, fname, email, li2, qualify, exp, address, phone, id)  # [(name.png, xyz, ...) , (name2, abc, ...)]
-    return render(request, 'userprofiledisplay.html', {'list': mylist, 'b':b})
+    kk=request.session['id']
+    print(kk)
+    print(uid)
+    mylist = zip(li, fname, email, li2, qualify, exp, address, phone, id,uid)  # [(name.png, xyz, ...) , (name2, abc, ...)]
+    return render(request, 'userprofiledisplay.html', {'list': mylist,'kk':kk})
 
 
 def edituserdetails(request, id):
@@ -279,7 +286,7 @@ def edituserdetails(request, id):
         a.address = request.POST.get('address')
         a.phone = request.POST.get('phone')
         a.save()
-        return redirect(userdisplay)
+        return render(request, 'userlogin.html')
     return render(request, 'edituserdetails.html',{'a':a, 'image':image, 'resume':resume})
 
 
@@ -290,7 +297,7 @@ def deleteuserdetails(request, id):
     if len(a.resume)>0:
         os.remove(a.resume.path)
     a.delete()
-    return redirect(userdisplay)
+    return render(request, 'userlogin.html')
 
 def jobapply(request, id):
     a = addmodel.objects.get(id=id)
