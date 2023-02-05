@@ -67,12 +67,26 @@ class jobapplymodel(models.Model):
     email = models.EmailField()
     resume = models.FileField(upload_to='capp/static')
 
-class wishlistmodel(models.Model):
+# class wishlistmodel(models.Model):
+#     uid = models.IntegerField()
+#     cid = models.IntegerField()
+#     cname = models.CharField(max_length=50)
+#     email = models.EmailField()
+#     jtitle = models.CharField(max_length=25)
+#     jtype = models.CharField(max_length=25)
+#     wtype = models.CharField(max_length=25)
+#     exp = models.CharField(max_length=25)
+#     qualify = models.CharField(max_length=70)
+
+class wishlistsmodel(models.Model):
+    uid=models.IntegerField()
+    cid=models.IntegerField()
     cname = models.CharField(max_length=50)
     email = models.EmailField()
     jtitle = models.CharField(max_length=25)
     jtype = models.CharField(max_length=25)
     wtype = models.CharField(max_length=25)
     exp = models.CharField(max_length=25)
-    qualify = models.CharField(max_length=70)
+    qualify = models.CharField(max_length=100)
+
 

@@ -200,6 +200,8 @@ def userdel(request, id):
     a = User.objects.get(id=id)
     a.delete()
     return render(request, 'userprofiledisplay.html')
+
+
 def userdetails(request, id):
     b = User.objects.get(id=id)
     fn = b.first_name
@@ -261,8 +263,6 @@ def userdisplay(request,id):
         address.append(ad)
         phone.append(ph)
     kk=request.session['id']
-    print(kk)
-    print(uid)
     mylist = zip(li, fname, email, li2, qualify, exp, address, phone, id,uid)  # [(name.png, xyz, ...) , (name2, abc, ...)]
     return render(request, 'userprofiledisplay.html', {'list': mylist,'kk':kk})
 
@@ -326,17 +326,19 @@ def jobapply(request, id):
 
 def wishlist(request,id):
     a = addmodel.objects.get(id=id)
-    b = wishlistmodel(cname=a.cname,email=a.email,jtitle=a.jtitle,jtype=a.jtype,wtype=a.wtype,exp=a.exp,qualify=a.qualify)
+    id = request.session['id']
+    print(id)
+    b = wishlistsmodel(uid=id, cid=id, cname=a.cname, email=a.email, jtitle=a.jtitle, jtype=a.jtype, wtype=a.wtype, exp=a.exp, qualify=a.qualify)
     b.save()
-    # return HttpResponse("Job added to wishlist")
     return redirect(wishdisplay)
 
 def wishdisplay(request):
-    a = wishlistmodel.objects.all()
-    return render(request, 'wishlistdisplay.html', {'a': a})
+    a = wishlistsmodel.objects.all()
+    id = request.session['id']
+    return render(request, 'wishlistdisplay.html', {'a': a, 'id': id})
 
 def wishdelete(request,id):
-    a = wishlistmodel.objects.get(id=id)
+    a = wishlistsmodel.objects.get(id=id)
     a.delete()
     return redirect(wishdisplay)
 

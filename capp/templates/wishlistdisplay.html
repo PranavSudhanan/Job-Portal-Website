@@ -9,6 +9,7 @@
 <body background="https://images.pexels.com/photos/233698/pexels-photo-233698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
 {% include 'navbar.html' %}<br><br><br><br>
 {% for i in a %}
+{% if i.uid == id %}
 <div class="container">
      <div class="row mt-3 mb-3">
             <div class="col-12  " >
@@ -36,6 +37,7 @@ background: linear-gradient(to right, #135058, #F1F2B5); color: white">
             </div>
      </div>
 </div>
+{% endif %}
 {% endfor %}
 </body>
 {% include 'footer.html' %}
